@@ -1,0 +1,52 @@
+<html>
+<head>
+	<style>
+		h1 { font-size: 84px; }
+		h1 { font-size: 84px; }
+		a { color: black; text-decoration: none; }
+		a:hover { text-decoration: underline; }
+	</style>
+
+	<script src="words.js"></script>
+	<script>
+		var dayIndex = (new Date()).getDay()
+		var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+		var day = days[dayIndex % days.length];
+		var prefix = day[0].toLowerCase()
+		if (day == 'Thursday') {
+			prefix = 'th'
+		}
+
+		// Filter words with starting letter.
+		// If it's Tuesday then exclude Thursday's words.
+		var subset = words.filter(function(s) {
+			if (prefix == 't') {
+				return s.startsWith(prefix) && !s.startsWith('th')
+			}
+			return s.startsWith(prefix)
+		})
+
+		// Choose word for the day.
+		var index = Math.floor((new Date()).getTime() / 86400000 / 7)
+		var word = subset[index % subset.length];
+		
+		// Titlecase the word.
+		function titlecase(s) {
+			return s.replace(/\w\S*/g, function(v){return v.charAt(0).toUpperCase() + v.substr(1).toLowerCase();});
+		}
+	</script>
+</head>
+
+<body>
+	<center>
+		<h1>
+			<script>
+				document.write('<a href="http://dictionary.reference.com/browse/' + word + '" target="_blank">');
+				document.write('Have a<br/>' + titlecase(word) + ' ' + day + '!');
+				document.write('</a>');
+			</script>
+		</h1>
+	</center>
+</body>
+
+</html>
