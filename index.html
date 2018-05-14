@@ -7,7 +7,16 @@
 		a:hover { text-decoration: underline; }
 	</style>
 
-	<script src="words.js"></script>
+	<script>
+		var words = {};
+	</script>
+
+	<script src="words/f.js"></script>
+	<script src="words/m.js"></script>
+	<script src="words/s.js"></script>
+	<script src="words/t.js"></script>
+	<script src="words/th.js"></script>
+	<script src="words/w.js"></script>
 	<script>
 		var dayIndex = (new Date()).getDay()
 		var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -19,12 +28,7 @@
 
 		// Filter words with starting letter.
 		// If it's Tuesday then exclude Thursday's words.
-		var subset = words.filter(function(s) {
-			if (prefix == 't') {
-				return s.startsWith(prefix) && !s.startsWith('th')
-			}
-			return s.startsWith(prefix)
-		})
+		var subset = words[prefix];
 
 		// Choose word for the day.
 		var index = Math.floor((new Date()).getTime() / 86400000 / 7)
