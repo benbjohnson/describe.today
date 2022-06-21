@@ -96,7 +96,7 @@ words.f = [
 "fattening",
 "favorable",
 "flirtatious",
-"fugly",
+"fraudulent",
 "flashy",
 "flattering",
 "fizzy",
